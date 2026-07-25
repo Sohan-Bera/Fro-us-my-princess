@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,149 +7,177 @@
 <title>My Surprise ❤️</title>
 
 <style>
-
-body{
-margin:0;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#ff758c,#ff7eb3);
-overflow:hidden;
+* {
+    box-sizing: border-box;
 }
 
-.card{
-
-background:rgba(255,255,255,.18);
-backdrop-filter:blur(15px);
-padding:50px;
-border-radius:25px;
-text-align:center;
-color:white;
-box-shadow:0 20px 40px rgba(0,0,0,.25);
-
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    background-attachment: fixed;
+    padding: 40px 20px;
+    color: white;
 }
 
-h1{
-
-font-size:42px;
-
+.container {
+    max-width: 650px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    text-align: center;
 }
 
-p{
-
-font-size:18px;
-line-height:32px;
-
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-a{
-
-display:inline-block;
-margin-top:25px;
-padding:14px 35px;
-background:white;
-color:#ff4d88;
-text-decoration:none;
-border-radius:30px;
-font-weight:bold;
-
+.card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
+.card h2 {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    padding-bottom: 8px;
+}
+
+.card p {
+    font-size: 17px;
+    line-height: 28px;
+    font-style: italic;
+    margin: 0;
+    white-space: pre-line;
+}
+
+.note-card p {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 14px 40px;
+    background: white;
+    color: #ff4d88;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+}
+
+footer {
+    margin-top: 15px;
+    font-size: 13px;
+    opacity: 0.85;
+    line-height: 18px;
+}
 </style>
-
 </head>
 
 <body>
 
-    <audio id="bgMusic" autoplay loop>
+<audio id="bgMusic" autoplay loop>
     <source src="raabta_slowed.mp3" type="audio/mpeg">
 </audio>
 
-<div class="card">
+<div class="container">
 
-<h1>🫀 A little piece of my heart🫀</h1>
+    <h1>🫀 A Little Piece of My Heart 🫀</h1>
 
-<p>
-    <b>The Philosophy & Understanding</b>
-    
-<i>"Roz dekhta hoon ishq mein kisi ko tadapte, kisi ko muskurate,
-
+    <!-- Card 1 -->
+    <div class="card">
+        <h2>The Philosophy & Understanding</h2>
+        <p>Roz dekhta hoon ishq mein kisi ko tadapte, kisi ko muskurate,
 Samjh aaya ek hi raaz se log yeh saare rang hain paate...
-
 Ziyada kuch nahi, bas zaroorat hoti hai dono dilon ko,
+Thode se dard ki, aur thode se mohabbat ke sukoon ki.</p>
+    </div>
 
-Thode se dard ki, aur thode se mohabbat ke sukoon ki."</i><br>
-       
-
-   <b>The Patience & Waiting</b>
-    
-    <i>"Haan maanta hoon zindagi mein maine kuch khoya hai,
-
+    <!-- Card 2 -->
+    <div class="card">
+        <h2>The Patience & Waiting</h2>
+        <p>Haan maanta hoon zindagi mein maine kuch khoya hai,
 Apno ke alawa sabse dil lagana ab chhod diya hai...
-
 Sacchi mohabbat ko dhoondha nahi, bas intezaar kiya,
+Kyunki dhoondne se aisi qismat ka pata kahan milta hai.</p>
+    </div>
 
-Kyunki dhoondne se aisi qismat ka pata kahan milta hai,
-
-Yeh to bas rubaru hokar dil se dil mein khilta hai."</i><br>
-
-    <b>Finding You</b>
-    
-    <i>"Zindagi ke iss safar mein khush hoon ki tum mili ho,
-
+    <!-- Card 3 -->
+    <div class="card">
+        <h2>Finding You</h2>
+        <p>Zindagi ke iss safar mein khush hoon ki tum mili ho,
 Shukr hai Khuda ka, ki raah mein sirf tum hi khili ho...
-
 Tumhare alawa meri jaan kisi aur ke haath surakshit na hoti,
+Teri aankhon mein jo chhupa pyar hai, uski jagah kisi aur mein na hoti.</p>
+    </div>
 
-Teri aankhon mein jo chhupa pyar hai, uski jagah kisi aur mein na hoti."</i><br>
+    <!-- Card 4: Personal Note -->
+    <div class="card note-card">
+        <p>✨ Happy to meet you in my life. This website was made especially for you & me. _Sohan ✨</p>
+    </div>
 
-  ✨Happy to meet you in my life. This website was made especially for you & me. _Sohan✨
+    <!-- Go Back Button (Outside Cards) -->
+    <a href="index.html" class="back-btn">Go Back</a>
 
-</p>
-<p>&copy2026. Open Heart Gallery. Privacy maintained. Non-Commercial. End-to-endencrypted by Administative Developer.</p>
+    <!-- Footer (Outside Cards) -->
+    <footer>
+        &copy;2026. Open Heart Gallery. Privacy maintained. Non-Commercial.<br>
+        End-to-end encrypted by Sohan Bera (Administrative Developer).
+    </footer>
 
-<a href="index.html">Go Back</a>
+</div>
+
 <script>
-
 const music = document.getElementById("bgMusic");
 
 window.addEventListener("load", () => {
-
     music.volume = 0;
 
     music.play().catch(() => {
-
         document.body.addEventListener("click", () => {
-
             music.play();
-
         }, { once: true });
-
     });
 
     let volume = 0;
-
     const fade = setInterval(() => {
-
         volume += 0.03;
-
         if(volume >= 1){
-
             volume = 1;
             clearInterval(fade);
-
         }
-
         music.volume = volume;
-
-    },100);
-
+    }, 100);
 });
-
 </script>
-</div>
 
 </body>
 </html>
