@@ -13,73 +13,80 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
 }
 
 body {
-    min-height: 100dvh;
-    width: 100vw;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background: linear-gradient(135deg, #1f1c2c, #928dab);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px 16px;
+    position: relative;
     perspective: 1200px;
-    padding: 30px 15px;
 }
 
-/* Audio Unlock Overlay */
+/* Mobile Tap-To-Unlock Overlay (Hidden by Default) */
 #welcomeOverlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100dvh;
-    background: rgba(15, 12, 41, 0.88);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: rgba(15, 12, 41, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 10000;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
     padding: 20px;
-}
-
-#welcomeOverlay.hidden {
     opacity: 0;
     visibility: hidden;
+}
+
+/* Shown on Mobile */
+#welcomeOverlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .welcome-box {
     text-align: center;
     color: white;
-    padding: 35px 25px;
-    border-radius: 24px;
+    padding: 30px 20px;
+    border-radius: 20px;
     background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    max-width: 360px;
-    width: 90%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 320px;
 }
 
 .welcome-box h1 {
-    font-size: 26px;
-    margin-bottom: 10px;
+    font-size: 22px;
+    margin-bottom: 8px;
     font-weight: 700;
 }
 
 .welcome-box p {
-    font-size: 14px;
+    font-size: 13px;
     color: #e0e0e0;
-    margin-bottom: 25px;
+    margin-bottom: 22px;
 }
 
 .enter-btn {
-    padding: 14px 32px;
-    font-size: 16px;
+    width: 100%;
+    padding: 14px 0;
+    font-size: 15px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -87,21 +94,16 @@ body {
     color: white;
     font-weight: 600;
     box-shadow: 0 10px 25px rgba(255, 110, 196, 0.4);
-    animation: pulse 2s infinite;
-    transition: transform 0.2s ease;
-}
-
-.enter-btn:hover {
-    transform: scale(1.05);
+    animation: pulse 1.8s infinite;
 }
 
 @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.04); }
+    50% { transform: scale(1.03); }
     100% { transform: scale(1); }
 }
 
-/* Background Animated Circles */
+/* Background Floating Circles */
 .background {
     position: fixed;
     top: 0;
@@ -109,80 +111,80 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: -2;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .circle {
     position: absolute;
     border-radius: 50%;
-    background: rgba(255, 255, 255, .08);
-    animation: float 15s linear infinite;
+    background: rgba(255, 255, 255, .06);
+    animation: float 12s linear infinite;
 }
 
 .circle:nth-child(1) {
-    width: 350px;
-    height: 350px;
-    left: -50px;
+    width: 250px;
+    height: 250px;
+    left: -40px;
     top: 10%;
-    animation-duration: 18s;
 }
 
 .circle:nth-child(2) {
-    width: 220px;
-    height: 220px;
-    right: -40px;
-    top: 45%;
-    animation-duration: 12s;
+    width: 180px;
+    height: 180px;
+    right: -30px;
+    top: 50%;
+    animation-duration: 10s;
 }
 
 .circle:nth-child(3) {
-    width: 400px;
-    height: 400px;
-    bottom: -100px;
-    left: 30%;
-    animation-duration: 20s;
+    width: 300px;
+    height: 300px;
+    bottom: -60px;
+    left: 20%;
+    animation-duration: 15s;
 }
 
 @keyframes float {
     0% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-40px) rotate(180deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
     100% { transform: translateY(0) rotate(360deg); }
 }
 
 /* Header */
 header {
-    margin-bottom: 25px;
-    font-size: clamp(24px, 5vw, 34px);
+    margin-bottom: 20px;
+    font-size: clamp(24px, 5vw, 32px);
     font-weight: 700;
     color: white;
-    letter-spacing: 3px;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    letter-spacing: 2px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
     text-align: center;
-    z-index: 10;
+    z-index: 5;
 }
 
-/* Glass Card */
+/* Responsive Glass Card */
 .card {
     width: 100%;
-    max-width: 420px;
-    padding: 35px 25px;
-    border-radius: 25px;
+    max-width: 380px;
+    padding: 28px 20px;
+    border-radius: 22px;
     background: rgba(255, 255, 255, .15);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, .25);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, .3), 0 0 40px rgba(255, 255, 255, .08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
     text-align: center;
+    animation: fadeIn 1s ease-out;
+    z-index: 5;
     transform-style: preserve-3d;
     transition: transform 0.2s ease-out;
-    animation: fadeIn 1.2s ease;
-    z-index: 5;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -191,18 +193,13 @@ header {
 }
 
 .image {
-    width: clamp(160px, 45vw, 220px);
-    height: clamp(160px, 45vw, 220px);
-    margin: 0 auto 20px;
+    width: clamp(160px, 45vw, 200px);
+    height: clamp(160px, 45vw, 200px);
+    margin: 0 auto 16px;
     border-radius: 50%;
     overflow: hidden;
     border: 4px solid rgba(255, 255, 255, .4);
-    box-shadow: 0 0 20px rgba(255, 255, 255, .35), 0 0 35px rgba(255, 105, 180, .4);
-    transition: transform 0.3s ease;
-}
-
-.image:hover {
-    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(255, 255, 255, .3), 0 0 30px rgba(255, 105, 180, .35);
 }
 
 .image img {
@@ -213,52 +210,51 @@ header {
 }
 
 .card h2 {
-    margin-top: 5px;
     color: white;
-    font-size: clamp(19px, 4vw, 24px);
+    font-size: clamp(18px, 4.5vw, 22px);
     font-weight: 600;
 }
 
 .card p {
-    margin-top: 14px;
+    margin-top: 12px;
     color: #f1f1f1;
-    font-size: clamp(13px, 3.5vw, 15px);
-    line-height: 1.6;
+    font-size: clamp(13px, 3.5vw, 14.5px);
+    line-height: 1.55;
     font-style: italic;
     white-space: pre-line;
 }
 
-/* Button */
+/* Action Button */
 .action-btn {
-    margin-top: 25px;
-    padding: 14px 32px;
-    font-size: clamp(14px, 3.8vw, 16px);
+    width: 100%;
+    margin-top: 22px;
+    padding: 13px 0;
+    font-size: 15px;
     border: none;
-    border-radius: 40px;
+    border-radius: 30px;
     cursor: pointer;
     background: linear-gradient(45deg, #ff6ec4, #7873f5);
     color: white;
     font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, .25);
+    transition: transform 0.2s ease;
 }
 
 .action-btn:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 15px 35px rgba(255, 105, 180, .4);
+    transform: scale(1.02);
 }
 
 .action-btn:active {
-    transform: scale(0.97);
+    transform: scale(0.96);
 }
 
-/* Floating Emojis Overlay */
+/* Floating Emoji Overlay */
 #hearts {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     pointer-events: none;
     overflow: hidden;
     z-index: 999;
@@ -270,7 +266,7 @@ header {
     animation-timing-function: linear;
     user-select: none;
     will-change: transform;
-    text-shadow: 0 0 8px #ff4d6d, 0 0 20px #ff4d6d;
+    text-shadow: 0 0 6px #ff4d6d;
 }
 
 @keyframes fall {
@@ -282,7 +278,7 @@ header {
         opacity: 1;
     }
     100% {
-        transform: translateY(105vh) rotate(360deg);
+        transform: translateY(105dvh) rotate(360deg);
         opacity: 0;
     }
 }
@@ -291,12 +287,12 @@ header {
 
 <body>
 
-<!-- Welcome Overlay for Autoplay Permission -->
+<!-- Mobile Tap Overlay -->
 <div id="welcomeOverlay">
     <div class="welcome-box">
         <h1>Welcome Sanyukta ❤️</h1>
-        <p>Turn your volume up for the best experience</p>
-        <button class="enter-btn" id="startBtn">Tap to Enter ✨</button>
+        <p>Turn your phone volume up ✨</p>
+        <button class="enter-btn" id="startBtn">Tap to Open ❤️</button>
     </div>
 </div>
 
@@ -344,29 +340,49 @@ document.addEventListener("DOMContentLoaded", () => {
     const startBtn = document.getElementById("startBtn");
     const welcomeOverlay = document.getElementById("welcomeOverlay");
 
-    // Audio Unlock Logic for Mobile & Desktop
-    if (startBtn && music) {
-        startBtn.addEventListener("click", () => {
-            music.volume = 0;
-            music.play().then(() => {
-                let volume = 0;
-                const fade = setInterval(() => {
-                    volume += 0.05;
-                    if (volume >= 1) {
-                        volume = 1;
-                        clearInterval(fade);
-                    }
-                    music.volume = volume;
-                }, 100);
-            }).catch(err => {
-                console.log("Audio play prevented:", err);
-            });
+    // Detect Mobile/Touch Device
+    const isMobile = window.matchMedia("(pointer: coarse)").matches || 'ontouchstart' in window;
 
-            welcomeOverlay.classList.add("hidden");
+    const playWithFadeIn = () => {
+        if (!music) return;
+        music.volume = 0;
+        music.play().then(() => {
+            let volume = 0;
+            const fade = setInterval(() => {
+                volume += 0.05;
+                if (volume >= 1) {
+                    volume = 1;
+                    clearInterval(fade);
+                }
+                music.volume = volume;
+            }, 100);
+        }).catch(err => {
+            console.log("Audio play blocked:", err);
         });
+    };
+
+    if (isMobile) {
+        // Show Tap Overlay specifically on Mobile screens
+        welcomeOverlay.classList.add("active");
+
+        if (startBtn) {
+            startBtn.addEventListener("click", () => {
+                playWithFadeIn();
+                welcomeOverlay.classList.remove("active");
+            });
+        }
+    } else {
+        // Desktop: Skip overlay & start audio on first interaction or page load
+        playWithFadeIn();
+
+        const unlockDesktopAudio = () => {
+            playWithFadeIn();
+            window.removeEventListener("click", unlockDesktopAudio);
+        };
+        window.addEventListener("click", unlockDesktopAudio);
     }
 
-    // Floating Emojis Animation
+    // Floating Emojis
     const hearts = document.getElementById("hearts");
     if (hearts) {
         function createHeart() {
@@ -376,11 +392,11 @@ document.addEventListener("DOMContentLoaded", () => {
             heart.textContent = items[Math.floor(Math.random() * items.length)];
             heart.classList.add("floating-item");
 
-            const duration = 4 + Math.random() * 4;
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.top = "-50px";
+            const duration = 4 + Math.random() * 3;
+            heart.style.left = Math.random() * 95 + "vw";
+            heart.style.top = "-40px";
             heart.style.animationDuration = duration + "s";
-            heart.style.fontSize = (16 + Math.random() * 14) + "px";
+            heart.style.fontSize = (15 + Math.random() * 12) + "px";
 
             hearts.appendChild(heart);
 
@@ -389,12 +405,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }, duration * 1000);
         }
 
-        setInterval(createHeart, 300);
+        setInterval(createHeart, 350);
     }
 
-    // Dynamic 3D Desktop Cursor Tilt (Enabled on Desktop fine-pointer devices)
+    // 3D Card Tilt for Desktop Cursor
     const card = document.querySelector(".card");
-    if (card && window.matchMedia("(pointer: fine)").matches) {
+    if (card && !isMobile) {
         document.addEventListener("mousemove", (e) => {
             const x = (window.innerWidth / 2 - e.clientX) / 25;
             const y = (window.innerHeight / 2 - e.clientY) / 25;
