@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Surprise ❤️</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+overflow:hidden;
+}
+
+.card{
+
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(15px);
+padding:50px;
+border-radius:25px;
+text-align:center;
+color:white;
+box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+}
+
+h1{
+
+font-size:42px;
+
+}
+
+p{
+
+font-size:18px;
+line-height:32px;
+
+}
+
+a{
+
+display:inline-block;
+margin-top:25px;
+padding:14px 35px;
+background:white;
+color:#ff4d88;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <audio id="bgMusic" autoplay loop>
+    <source src="raabta_slowed.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+
+<h1>❤️ You Are Special ❤️</h1>
+
+<p>
+
+Thank you for coming into my life.
+I don't know what the future holds,
+but I wanted you to know that
+you make my world a little brighter every day.
+
+✨ This website was made especially for you. ✨
+
+</p>
+
+<a href="home.html">Go Back</a>
+<script>
+
+const music = document.getElementById("bgMusic");
+
+window.addEventListener("load", () => {
+
+    music.volume = 0;
+
+    music.play().catch(() => {
+
+        document.body.addEventListener("click", () => {
+
+            music.play();
+
+        }, { once: true });
+
+    });
+
+    let volume = 0;
+
+    const fade = setInterval(() => {
+
+        volume += 0.03;
+
+        if(volume >= 1){
+
+            volume = 1;
+            clearInterval(fade);
+
+        }
+
+        music.volume = volume;
+
+    },100);
+
+});
+
+</script>
+</div>
+
+</body>
+</html>
